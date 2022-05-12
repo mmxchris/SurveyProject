@@ -1,0 +1,87 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Project</title>
+    
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    <h1>Survey Information</h1>
+    
+    <form id="myForm">
+        <lable for="surveyNum">Survey Number</lable>
+        <input type="text" name="surveyNum" id="surveyNum" value="">
+        <p style="color: c7c7c7;">Enter the survey number.</p>
+
+        <lable for="monthWeek">Month Week</lable>
+        <input type="text" name="monthWeek" id="monthWeek" value="">
+        <p style="color: c7c7c7;">Enter the month and week. Example Janurary Week 1.</p>
+
+        <lable for="itemName">Item Name</lable>
+        <input type="text" name="itemName" id="itemName" value="">
+        <p style="color: c7c7c7;">Enter the name of the item.</p>
+
+        <lable for="salePrice">Sale Price</lable>
+        <input type="number" step="0.01" name="salePrice" id="salePrice" value="">
+        <p style="color: c7c7c7;">Enter the sale price.</p>
+
+        <lable for="cost">Cost</lable>
+        <input type="number" step="0.01" name="cost" id="cost" value="">
+        <p style="color: c7c7c7;">Enter the cost.</p>
+
+        <lable for="grossProfit">Gross Profit</lable>
+        <input type="number" step="0.01" name="grossProfit" id="grossProfit" value="">
+        <p style="color: c7c7c7;">Enter the cost.</p>
+
+        <lable for="firstDelivery">First delivery amount</lable>
+        <input type="number" name="firstDelivery" id="firstDelivery" value="">
+        <p style="color: c7c7c7;">Enter the amount for the first delivery.</p>
+
+        <lable for="secondDelivery">Second delivery amount</lable>
+        <input type="number" name="secondDelivery" id="secondDelivery" value="">
+        <p style="color: c7c7c7;">Enter the amount for the second delivery.</p>
+
+        <lable for="thirdDelivery">Third delivery amount</lable>
+        <input type="number" name="thirdDelivery" id="thirdDelivery" value="">
+        <p style="color: c7c7c7;">Enter the amount for the third delivery.</p>
+
+        <lable for="amountRecived">Amount recived</lable>
+        <input type="number" name="amountRecived" id="amountRecived" value="">
+        <p style="color: c7c7c7;">Enter the total amount recived</p>
+
+        <lable for="amountAfterSale">Amount remaining after the sale.</lable>
+        <input type="number" name="amountRecived" id="amountRecived" value="">
+        <p style="color: c7c7c7;">Enter the amount remaining after the sale is over.</p>
+
+        <lable for="ranOut">Did you ran out?</lable>
+        <input type="text" name="ranOut" id="ranOut" value="">
+        <p style="color: c7c7c7;">Answer 'yes' if you ran out. Enter 'no' if you did not</p>
+
+        <input type="button" onclick="" value="Reset">
+        <input type="submit" value="Submit">  
+    </form>
+
+    <script>
+        function submit(event) {
+            //event.preventDefualt();
+            event.preventDefault();
+
+            const data = new FormData(event.target);
+
+            const value = Object.fromEntries(data.entries());
+            const json = JSON.stringify(value);
+
+            console.log({ json });
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:3000/MeatSurveys/", true);
+            xhr.setRequestHeader('Content-Type', 'app;ication/json');
+            xhr.send(json);
+            console.log("Sent")
+        }
+
+        const form = document.querySelector("form")
+        form.addEventListener('submit', submit);
+    </script>
