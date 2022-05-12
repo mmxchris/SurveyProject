@@ -76,7 +76,7 @@
             console.log({ json });
 
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://localhost:3000/MeatSurveys/", true);
+            xhr.open("POST", "https://surveyprojectbowen.herokuapp.com/MeatSurveys/", true);
             xhr.setRequestHeader('Content-Type', 'app;ication/json');
             xhr.send(json);
             console.log("Sent")
